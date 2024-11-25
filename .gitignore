@@ -1,0 +1,12 @@
+# Ignore all virtual environments
+venv/
+env/
+flask/
+*.env/
+
+
+# Ignore Flask environment configuration
+.flaskenv
+
+# Ignore general environment files
+.env
