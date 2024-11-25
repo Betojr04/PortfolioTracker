@@ -38,6 +38,18 @@ class Portfolio(db.Model):
     user = db.relatinship("User", back_populates="portfolios")
 
 
+class Asset(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    ticker_symbol = db.Column(db.String(10), nullable=False)
+    quantity = db.Column(
+        db.Float,
+        nullable=False,
+    )
+    portfolio_id = db.Column(db.Integer, db.ForeignKey("portfolios.id"), nullable=False)
+
+    portfolio = db.relationship("Portfolio", back_populates="assets")
+
+
 @app.route("/")
 def welcome():
     print("Welcome to Portfolio Tracker")
